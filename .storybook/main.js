@@ -61,31 +61,74 @@ module.exports = {
 
 		// Make whatever fine-grained changes you need
 		config.module.rules.push(
-			{
-				test: /\.vue$/,
-				loader: 'vue-loader',
-				options: {
-				  loaders: {},
-				  // other vue-loader options go here
-				},
-			},
-			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/,
-			},
-			{
-				test: /\.stories\.jsx?$/,
-				loader: require.resolve('@storybook/source-loader'),
-				include: [path.resolve(__dirname, '../components')],
-				enforce: 'pre',
-			},
+			// {
+			// 	test: /\.vue$/,
+			// 	loader: 'vue-loader',
+			// 	options: {
+			// 	  loaders: {},
+			// 	  // other vue-loader options go here
+			// 	},
+			// },
+			// {
+			// 	test: /\.vue$/,
+			// 	use: ['vue-loader', 'vue-loader']
+			// },
+			// {
+			// 	test: /\.js$/,
+			// 	loader: 'babel-loader',
+			// 	exclude: /node_modules/,
+			// },
+			// {
+			// 	test: /\.stories\.jsx?$/,
+			// 	loader: require.resolve('@storybook/source-loader'),
+			// 	include: [path.resolve(__dirname, '../components')],
+			// 	enforce: 'pre',
+			// },
 			{
 				test: /\.s?css$/,
-				loaders: ['style-loader', 'css-loader', 'sass-loader'],
-				include: path.resolve(__dirname, '../')
+				use: [
+				  'vue-style-loader',
+				  'style-loader',
+				  'css-loader',
+				//   'sass-loader',
+				//   {
+				// 	loader: 'sass-resources-loader',
+				// 	options: {
+				// 	  // Provide path to the file with resources
+				// 	//   resources: './assets/styles/shared.scss',
+		
+				// 	  /*
+				// 	  // Or array of paths
+				// 	  resources: ['./path/to/vars.scss', './path/to/mixins.scss'] */
+				// 	},
+				//  },
+				],
+				include: path.resolve(__dirname, '../'),
 			},
-			
+		
+			// {
+			// 	test: /\.s?css$/,
+			// 	loaders: ['style-loader', 'css-loader', 'sass-loader'],
+			// 	include: path.resolve(__dirname, '../')
+			// },
+
+		//	https://github.com/mstrlaw/nuxt-storybook/issues/3#issuecomment-623274159
+		
+			// {
+			// 	test: /\.(post)?css$/,
+			// 	loaders: [
+			// 	  'style-loader',
+			// 	  'css-loader',
+			// 	  {
+			// 		loader: 'postcss-loader',
+			// 		options: {
+			// 		  config: { path: './.storybook/' }
+			// 		}
+			// 	  }
+			// 	],
+			// 	include: path.resolve(__dirname, '../')
+			// }
+		
 			// {
 			// 	test: /\.css$/,
 			// 	use: [
