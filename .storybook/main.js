@@ -10,8 +10,6 @@ module.exports = {
 	
 
 	addons: [
-		// '@storybook/preset-scss',
-		// '@storybook/addon-docs',
 		{
 			name: '@storybook/preset-scss',
 			options: {
@@ -54,127 +52,68 @@ module.exports = {
 		// 	!(rule.test instanceof RegExp) || !rule.test.test('.vue')
 		// )
 
-		// // Remove the existing css rule
-		// config.module.rules = config.module.rules.filter(
-		// 	f => f.test.toString() !== '/\\.css$/'
-		// );
+		// remove default css rules
+		config.module.rules = config.module.rules.filter(rule =>
+			!(rule.test instanceof RegExp) || !rule.test.test('.css')
+		)
 
-		// Make whatever fine-grained changes you need
+		//--------------
+		// New thing!
+		// https://github.com/storybookjs/storybook/issues/6319#issuecomment-619634824
+		//--------------
+		// config.module.rules.forEach(rule => {
+		// 	// See: https://github.com/storybookjs/storybook/issues/6319
+		// 	if (rule.test.toString() === '/\\.css$/') {
+		// 	  const idx = rule.use.findIndex(({ loader }) => loader && loader.includes('css-loader'));
+		// 	  rule.use[idx].options.modules = true;
+		// 	}
+		//   });
+
+
 		config.module.rules.push(
-			// {
-			// 	test: /\.vue$/,
-			// 	loader: 'vue-loader',
-			// 	options: {
-			// 	  loaders: {},
-			// 	  // other vue-loader options go here
-			// 	},
-			// },
-			// {
-			// 	test: /\.vue$/,
-			// 	use: ['vue-loader', 'vue-loader']
-			// },
-			// {
-			// 	test: /\.js$/,
-			// 	loader: 'babel-loader',
-			// 	exclude: /node_modules/,
-			// },
-			// {
-			// 	test: /\.stories\.jsx?$/,
-			// 	loader: require.resolve('@storybook/source-loader'),
-			// 	include: [path.resolve(__dirname, '../components')],
-			// 	enforce: 'pre',
-			// },
+	
+
+			// this is working (remember to remove the test:css also ;)
+
 			{
 				test: /\.s?css$/,
-				use: [
-				  'vue-style-loader',
-				  'style-loader',
-				  'css-loader',
-				//   'sass-loader',
-				//   {
-				// 	loader: 'sass-resources-loader',
-				// 	options: {
-				// 	  // Provide path to the file with resources
-				// 	//   resources: './assets/styles/shared.scss',
-		
-				// 	  /*
-				// 	  // Or array of paths
-				// 	  resources: ['./path/to/vars.scss', './path/to/mixins.scss'] */
-				// 	},
-				//  },
-				],
-				include: path.resolve(__dirname, '../'),
+				loaders: ['style-loader', 'css-loader', 'sass-loader'],
+				include: path.resolve(__dirname, '../')
 			},
-		
-			// {
-			// 	test: /\.s?css$/,
-			// 	loaders: ['style-loader', 'css-loader', 'sass-loader'],
-			// 	include: path.resolve(__dirname, '../')
-			// },
 
 		//	https://github.com/mstrlaw/nuxt-storybook/issues/3#issuecomment-623274159
 		
 			// {
 			// 	test: /\.(post)?css$/,
-			// 	loaders: [
-			// 	  'style-loader',
-			// 	  'css-loader',
-			// 	  {
+			// 	use: [
+			// 	// Loader for webpack to process CSS with PostCSS
+			// 	{
 			// 		loader: 'postcss-loader',
 			// 		options: {
-			// 		  config: { path: './.storybook/' }
-			// 		}
-			// 	  }
-			// 	],
-			// 	include: path.resolve(__dirname, '../')
-			// }
-		
-			// {
-			// 	test: /\.css$/,
-			// 	use: [
-			// 	  'vue-style-loader',
-			// 	  {
-			// 		loader: 'css-loader',
-			// 		options: {
-			// 		  // enable CSS Modules
-			// 		  modules: true,
-			// 		  // customize generated class names
-			// 		  localIdentName: '[local]_[hash:base64:8]',
+			// 		/* 
+			// 			Enable Source Maps
+			// 		*/
+			// 		sourceMap: true,
+			// 		/*
+			// 			Set postcss.config.js config path && ctx 
+			// 		*/
+			// 		config: {
+			// 			path: './.storybook/',
 			// 		},
-			// 	  },
+			// 		},
+			// 	},
 			// 	],
-			// }
+			// 	include: path.resolve(__dirname, '../storybook/'),
+			// 	// include: path.resolve(__dirname, '../'),
+			// }	
 		);
 
-		// config.resolve = {
-		// 	extensions: ['.js', '.vue', '.json'],
-		// 	alias: {
-		// 	  	vue$: 'vue/dist/vue.esm.js',
-		// 		'@': path.resolve('../'),
-		// 	},
-		//   };
 		
-		config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
-		
-
+		// config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
+	
 		// config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
 	
-		// config.resolve = {
-		// 	extensions: ['.js', '.vue', '.json'],
-		// 	alias: {
-		// 	  vue$: 'vue/dist/vue.esm.js',
-		// 	//   '@': resolve('src'),
-		// 	},
-		// };
 
-		// const newAlias = {
-		// 	...config.resolve.alias,
-		// 	'./styles/screenSizes.css': path.resolve('./src/styles/screenSizes.css'),
-		// 	'./styles/colors.css': path.resolve('./src/styles/colors.css'),
-		// 	'./styles/typography.css': path.resolve('./src/styles/typography.css'),
-		// 	'./styles/fonts': path.resolve('./src/styles/fonts'),
-		// 	'./styles/vendor': path.resolve('./src/styles/vendor'),
-		//   }
 
 	
 		// Return the altered config

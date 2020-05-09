@@ -22,7 +22,7 @@ Rounded.story = {
   },
 };
 
-// export const Square = () => ({
-//   components: { MyButton },
-//   template: '<my-button :rounded="false">A Button with square edges</my-button>',
-// });
+export const Square = () => ({
+  components: { MyButton },
+  template: '<my-button :rounded="false">A Button with square edges</my-button>',
+});
