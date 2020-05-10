@@ -1,3 +1,14 @@
+<template>
+  <button class="button btn" :class="type" :disabled="disabled" @click="click">
+    <!-- @slot Default to label prop -->
+    <!-- <img width="60px" src="../../logo.png" /> -->
+    <slot>
+      {{ label }}
+    </slot>
+  </button>
+</template>
+
+
 <script>
 /**
  * InfoButton component description
@@ -34,21 +45,11 @@ export default {
 };
 </script>
 
-<template>
-  <button class="button btn" :class="type" :disabled="disabled" @click="click">
-    <!-- @slot Default to label prop -->
-    <!-- <img width="60px" src="../../logo.png" /> -->
-    <slot>
-      {{ label }}
-    </slot>
-  </button>
-</template>
 
 
 <style lang="postcss">
 .btn{
 	font-size: 90px;
-	font-family: var(--font-stack);
 	background-color: var(--green);
 	border:none;
 	color: black;

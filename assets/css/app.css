@@ -14,7 +14,8 @@ body {
 	height:100%;
 	overflow-x:hidden;
 
-	font-family: var(--font-stack);
+	/* font-family: var(--font-stack); */
+	font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 

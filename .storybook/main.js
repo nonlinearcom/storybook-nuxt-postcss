@@ -10,7 +10,7 @@ module.exports = {
 
 		// preset-scss doesn't work with custom postcss config (yet) 
 		// https://github.com/storybookjs/presets/issues/131#issue-607035000
-		// '@storybook/preset-scss',
+		'@storybook/preset-scss',
 		'@storybook/addon-docs',
 		'@storybook/addon-storysource',
 		'@storybook/addon-actions',
@@ -37,7 +37,9 @@ module.exports = {
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: { importLoaders: 1 }
+						options: {
+							importLoaders: 1
+						}
 					},
 					{
 						loader: 'postcss-loader',
