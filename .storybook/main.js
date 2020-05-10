@@ -38,6 +38,8 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
+							// // enable CSS Modules
+							// modules: true,
 							importLoaders: 1
 						}
 					},

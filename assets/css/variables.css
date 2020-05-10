@@ -17,7 +17,9 @@
 }
 
 /*-----------------------------
+
   Breakpoints
+
 ------------------------------*/
 
 @custom-media --small-window (max-width: 480px);

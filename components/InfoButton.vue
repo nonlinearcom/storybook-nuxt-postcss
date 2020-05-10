@@ -49,7 +49,7 @@ export default {
 
 <style lang="postcss">
 .btn{
-	font-size: 90px;
+
 	background-color: var(--green);
 	border:none;
 	color: black;

@@ -5,8 +5,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // global style
-import '../assets/css/variables.css'
-
+import '@/assets/css/variables.css'
+import '@/assets/css/app.css'
 
 
 Vue.use(Vuex)
