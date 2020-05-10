@@ -1,0 +1,84 @@
+/*-----------------------------
+
+	Variables
+
+------------------------------*/
+
+:root{
+
+	/* colors */
+
+	--light-gray: #f5f5f5;
+	--dark-gray: #222222;
+
+	--gray-1: #333333;
+	--gray-2: #4F4F4F;
+	--gray-3: #828282;
+	--gray-4: #BDBDBD;
+	--gray-5: #E0E0E0;
+	--gray-6: #F2F2F2;
+
+	--light-text: 	var(--gray-3);
+	--border-color:	var(--gray-5);
+
+	
+	--green: #82C558;
+
+	/* typography */
+
+	--font-stack:       'Inter', 'Helvetica Neue', Arial, sans-serif;
+	--font-stack-bold:  'Inter-Bold','Helvetica Neue', Arial, sans-serif;
+	
+
+	--font-size:20px;
+	--line-height:  1.5; 
+
+	--font-size-small: 14px;
+	/* --line-height:  1.5; //21px; */
+	--regular: 400; 
+	--bold:    700;
+
+	/* layout */
+
+	--content-width: 1440px;
+	--app-margin: 42px;
+	--spacing: 32px;
+	
+	--stroke: 2px solid var(--stroke-color);
+	--shadow: 3px 3px 20px 0px rgba(0,0,0,0.2);
+
+}
+
+/*-----------------------------
+  Breakpoints
+------------------------------*/
+
+@custom-media --small-window (max-width: 480px);
+@custom-media --medium-window (max-width: 768px);
+@custom-media --large-window (max-width: 1024px);
+@custom-media --x-large-window (max-width: 1440px);
+@custom-media --xx-large-window (max-width: 1600px);
+
+@custom-media --small-min (min-width: 480px);
+@custom-media --medium-min (min-width: 768px);
+@custom-media --large-min (min-width: 1024px);
+@custom-media --x-large-min (min-width: 1440px);
+@custom-media --xx-large-min (min-width: 1600px);
+
+
+
+@media (--medium-window) {
+	:root{
+		--app-margin: 	28px; 
+		
+		--font-size: 	18px; 
+	}
+}
+
+@media (--small-window) {
+	:root{
+		--app-margin: 18px;
+	
+		--font-size: 16px; 
+	}
+}

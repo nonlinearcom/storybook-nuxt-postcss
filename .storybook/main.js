@@ -108,8 +108,8 @@ module.exports = {
 			// }	
 		);
 
-		
-		// config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
+		// we need this alias
+		config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
 	
 		// config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
 	

@@ -35,7 +35,7 @@ export default {
 </script>
 
 <template>
-  <button class="btn" :class="type" :disabled="disabled" @click="click">
+  <button class="button btn" :class="type" :disabled="disabled" @click="click">
     <!-- @slot Default to label prop -->
     <!-- <img width="60px" src="../../logo.png" /> -->
     <slot>
@@ -44,3 +44,12 @@ export default {
   </button>
 </template>
 
+
+<style lang="css">
+.btn{
+	background-color: var(--green);
+	border:none;
+	color: white;
+}
+
+</style>

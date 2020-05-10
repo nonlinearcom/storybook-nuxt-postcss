@@ -47,6 +47,7 @@
 		}
 
   .button {
+
     border: 3px solid;
     padding: 10px 20px;
     background-color: white;

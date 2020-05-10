@@ -4,6 +4,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// global variables
+import '@/assets/css/variables.css'
+import '@/assets/css/app.css'
+
 import MyButton from '../components/Button.vue';
 
 Vue.component('my-button', MyButton);
