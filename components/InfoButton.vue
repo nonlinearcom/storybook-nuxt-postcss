@@ -45,11 +45,20 @@ export default {
 </template>
 
 
-<style lang="css">
+<style lang="postcss">
 .btn{
+	font-size: 90px;
+	font-family: var(--font-stack);
 	background-color: var(--green);
 	border:none;
-	color: white;
+	color: black;
+}
+
+@media(--medium-window){
+
+	.btn {
+		background-color: red;
+	}
 }
 
 </style>

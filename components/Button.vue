@@ -41,10 +41,7 @@
   }
 </script>
 
-<style lang="css">
-.rounded {
-			border-radius: 5px;
-		}
+<style lang="postcss">
 
   .button {
 
@@ -53,6 +50,9 @@
     background-color: white;
     outline: none;
 
+	&.rounded {
+		border-radius: 5px;
+	}
 	  	
   }
 </style>
