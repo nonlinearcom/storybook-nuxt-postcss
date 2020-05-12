@@ -1,7 +1,7 @@
 {
   "name": "nuxt-storybook",
   "version": "1.0.0",
-  "description": "nuxt 2.12, Stroybook 6 and MDX test",
+  "description": "nuxt 2.12, Stroybook 6 and postcss",
   "author": "Manuel Ehrenfeld",
   "private": true,
   "scripts": {

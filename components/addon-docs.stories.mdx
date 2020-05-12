@@ -1,4 +1,4 @@
-import { Story, Preview, Meta } from '@storybook/addon-docs/blocks';
+import { Story, Preview, Meta, ColorPalette, ColorItem, IconGallery, IconItem, Typeset } from '@storybook/addon-docs/blocks';
 import { stripIndents } from 'common-tags';
 import MyButton from './Button.vue';
 
@@ -92,3 +92,24 @@ For more info, check out the [Storybook Docs Technical Preview](https://docs.goo
 We want your feedback to help make this more useful.
 
 Follow us on Twitter for more short demos & project updates! ❤️📈🛠
+
+
+# Colors
+
+<ColorPalette>
+  <ColorItem
+    title="theme.color.greyscale"
+    subtitle="Some of the greys"
+    colors={['#FFFFFF', '#F8F8F8', '#F3F3F3']}
+  />
+</ColorPalette>
+
+# Icons
+
+<IconGallery>
+  <IconItem name="add"><ExampleIcon icon="add" /></IconItem>
+</IconGallery>
+
+# Typography
+
+<Typeset fontSizes={['12px', '14px']} sampleText="Heading" />
