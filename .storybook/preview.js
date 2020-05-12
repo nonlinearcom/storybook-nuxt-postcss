@@ -8,12 +8,17 @@ import Vuex from 'vuex'
 import '@/assets/css/variables.css'
 import '@/assets/css/app.css'
 
+import MyButton from '../components/Button.vue';
+
+Vue.component('my-button', MyButton);
+
 
 Vue.use(Vuex)
 
 export const parameters = {
 	passArgsFirst: true,
 	docs: {
+		inlineStories: true,
 		iframeHeight: '60px'
 	}
 }

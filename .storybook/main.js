@@ -8,10 +8,20 @@ module.exports = {
 
 	addons: [
 
-		// preset-scss doesn't work with custom postcss config (yet) 
+		// preset-scss doesn't work with custom postcss config (yet)
 		// https://github.com/storybookjs/presets/issues/131#issue-607035000
-		'@storybook/preset-scss',
-		'@storybook/addon-docs',
+		// '@storybook/preset-scss',
+		// '@storybook/addon-docs',
+		{
+			name: '@storybook/addon-docs',
+			options: {
+			  vueDocgenOptions: {
+				alias: {
+				  '@': path.resolve(__dirname, '../'),
+				},
+			  },
+			},
+		},
 		'@storybook/addon-storysource',
 		'@storybook/addon-actions',
 		'@storybook/addon-links',
@@ -23,13 +33,13 @@ module.exports = {
 
 	webpackFinal: async (config, { configType }) => {
 
-		// apparently we need to remove default rules before overwrite them (?)  
+		// apparently we need to remove default rules before overwrite them (?)
 
 		// remove default css rules
 		config.module.rules = config.module.rules.filter(
 			rule => !(rule.test instanceof RegExp) || !rule.test.test('.css')
 		)
-		
+
 		config.module.rules.push(
 			{
 				test: /\.(post)?css$/,
@@ -53,12 +63,13 @@ module.exports = {
 						}
 					}
 				]
-			}
+			},
+
 		)
 
 		// we need this alias
 		config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
-		
+
 		// but not this one (?)
 		// config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
 

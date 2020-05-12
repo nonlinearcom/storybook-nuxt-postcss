@@ -11,11 +11,6 @@ body {
 
 }
 
-button{
-	 /* why font font-family is not inherit like font-size? */
-	font-family: var(--font-stack); 
-	font-size: 36px;
-}
 
 @media (--medium-window) {
 	body{
