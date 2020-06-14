@@ -1,0 +1,60 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import MyButton from '../Button.vue';
+
+<Meta
+	title='Components/buttons'
+	decorators={[]}
+	parameters= {{
+		layout: 'centered',
+		backgrounds: {
+			default: 'light-gray'
+		}
+	}}
+	argTypes= {{
+		rounded: {
+			defaultValue: true
+		},
+		color: {
+			control: {
+				type: 'color'
+			},
+			defaultValue: '#f00'
+		}
+	}}
+/>
+
+# MDX story demo 1
+
+## MyButton story
+
+
+<Story name="rounded" >
+  {{
+	components: { MyButton },
+    template: '<my-button :rounded="true">A Button with rounded edges</my-button>',
+  }}
+</Story>
+
+
+
+
+## MyButton preview (square)
+
+<Preview>
+	<Story name="square">
+	{{
+		components: { MyButton },
+		template: '<my-button :rounded="false">A Button with square edges</my-button>',
+	}}
+	</Story>
+</Preview>
+
+## MyButton preview (rounded)
+
+<Preview>
+  <Story id="components-buttons--rounded" inline={true} />
+</Preview>
+
+<Props of={MyButton} />
+
+

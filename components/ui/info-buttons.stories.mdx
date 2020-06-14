@@ -1,0 +1,47 @@
+import { Meta, Story, Preview, Props, Description } from '@storybook/addon-docs/blocks';
+import InfoButton from '../InfoButton.vue';
+
+<Meta title="Components/info-button" component={InfoButton} />
+
+# MDX story demo 2
+
+## Story displayed on the canvas tab
+component name "from mdx"
+
+<Story name="from mdx">
+  {{
+	components: { InfoButton },
+    template: '<InfoButton label="I\'m a button!"/>',
+  }}
+</Story>
+
+
+## story preview in docs 1
+component name "InfoButton2"
+
+<Preview>
+	<Story name="InfoButton2">
+		{{
+			components: { InfoButton },
+			template: '<InfoButton label="I\'m a button!"/>',
+		}}
+	</Story>
+</Preview>
+
+## story preview in docs 2
+in this case we can call any component from the id (slug) 🔥
+<Preview>
+  <Story id="components-info-button--from-mdx" />
+</Preview>
+
+## info-button props
+
+<Props of={InfoButton} />
+
+## info-button description
+
+<Description of={InfoButton} />
+
+
+## more info
+[https://storybook.js.org/docs/formats/mdx-syntax/](https://storybook.js.org/docs/formats/mdx-syntax/)

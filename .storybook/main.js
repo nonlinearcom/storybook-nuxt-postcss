@@ -4,10 +4,9 @@
 const path = require('path')
 
 module.exports = {
-	stories: ['../components/**/*.stories.(js|mdx)'],
+	stories: ['../components/**/*.stories.@(js|mdx)'],
 
 	addons: [
-
 		// preset-scss doesn't work with custom postcss config (yet)
 		// https://github.com/storybookjs/presets/issues/131#issue-607035000
 		// '@storybook/preset-scss',
@@ -15,17 +14,18 @@ module.exports = {
 		{
 			name: '@storybook/addon-docs',
 			options: {
-			  vueDocgenOptions: {
-				alias: {
-				  '@': path.resolve(__dirname, '../'),
-				},
-			  },
-			},
+				configureJSX: true,
+				vueDocgenOptions: {
+					alias: {
+						'@': path.resolve(__dirname, '../')
+					}
+				}
+			}
 		},
+		'@storybook/addon-controls',
 		'@storybook/addon-storysource',
 		'@storybook/addon-actions',
 		'@storybook/addon-links',
-		'@storybook/addon-knobs',
 		'@storybook/addon-viewport',
 		'@storybook/addon-backgrounds',
 		'@storybook/addon-a11y'
@@ -40,40 +40,33 @@ module.exports = {
 			rule => !(rule.test instanceof RegExp) || !rule.test.test('.css')
 		)
 
-		config.module.rules.push(
-			{
-				test: /\.(post)?css$/,
-				use: [
-					'style-loader',
-					{
-						loader: 'css-loader',
-						options: {
-							// // enable CSS Modules
-							// modules: true,
-							importLoaders: 1
-						}
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true,
-							config: {
-								path: './.storybook/'
-							}
+		config.module.rules.push({
+			test: /\.(post)?css$/,
+			use: [
+				'style-loader',
+				{
+					loader: 'css-loader',
+					options: {
+						// // enable CSS Modules
+						// modules: true,
+						importLoaders: 1
+					}
+				},
+				{
+					loader: 'postcss-loader',
+					options: {
+						sourceMap: true,
+						config: {
+							path: './.storybook/'
 						}
 					}
-				]
-			},
-
-		)
+				}
+			]
+		})
 
 		// we need this alias
 		config.resolve.alias['@'] = path.dirname(path.resolve(__dirname))
 
-		// but not this one (?)
-		// config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
-
-		// Return the altered config
 		return config
 	}
 }
